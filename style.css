@@ -1,250 +1,172 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap');
-
-:root {
-    --bg-dark: #06050e;
-    --card-bg: rgba(13, 11, 26, 0.75);
-    --gold-primary: #ffd700;
-    --gold-glow: #ffaa00;
-    --ps4-blue: #00d2ff;
-    --ps5-red: #ff2a5f;
-    --border-color: rgba(255, 255, 255, 0.12);
-}
-
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html, body {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden; /* يمنع ظهور شريط التمرير النهائي */
-    background-color: var(--bg-dark);
-    color: #ffffff;
-    font-family: 'Rajdhani', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    background-color: #08090c;
+    color: #ffffff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
 }
 
-/* خلفية الجزيئات تغطي الشاشة بالكامل خلف العناصر */
 #particles-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
-/* الحاوية الرئيسية تتوسط الشاشة بحجم مدروس */
 .main-wrapper {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    width: 100%;
-    max-height: 100vh;
-}
-
-/* --- الهيدر والعنوان --- */
-.title-container {
-    text-align: center;
-    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    background: rgba(15, 17, 23, 0.75);
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 210, 255, 0.1);
+    backdrop-filter: blur(10px);
+    width: 90%;
+    max-width: 480px;
 }
 
 .main-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 900;
-    letter-spacing: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
 }
 
 .name-Brkhat {
-    background: linear-gradient(135deg, #fff 0%, var(--gold-primary) 50%, var(--gold-glow) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
-    animation: pulseGlow 3s infinite alternate;
+    color: #ffd700;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
 }
 
 .ps4-title {
-    color: var(--ps4-blue);
-    text-shadow: 0 0 12px rgba(0, 210, 255, 0.8), 0 0 25px rgba(0, 210, 255, 0.4);
+    color: #00d2ff;
+    text-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+    margin: 0 5px;
 }
 
 .ps5-title {
-    color: var(--ps5-red);
-    text-shadow: 0 0 12px rgba(255, 42, 95, 0.8), 0 0 25px rgba(255, 42, 95, 0.4);
+    color: #ff2a5f;
+    text-shadow: 0 0 12px rgba(255, 42, 95, 0.6);
 }
 
 .subtitle {
-    font-size: 1rem;
-    color: #a0a0b8;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-    margin-top: 4px;
-    font-weight: 600;
+    font-size: 0.85rem;
+    color: #a0a5b5;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
 }
 
 .version-badge {
-    display: inline-block;
-    background: rgba(255, 215, 0, 0.1);
-    color: var(--gold-primary);
-    border: 1px solid rgba(255, 215, 0, 0.4);
-    padding: 5px 18px;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    margin-top: 10px;
-    letter-spacing: 2px;
-    font-family: 'Orbitron', sans-serif;
-    box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
-    backdrop-filter: blur(10px);
+    display: inline-block;
+    background: rgba(255, 215, 0, 0.08);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    color: #ffd700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
 }
 
 hr {
-    border: none;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.5), rgba(255, 42, 95, 0.5), transparent);
-    width: 80%;
-    max-width: 500px;
-    margin: 12px auto 18px;
-}
-
-/* --- الكارت الرئيسي (#menu) --- */
-#menu {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 25px 20px;
-    max-width: 480px;
-    width: 100%;
-    text-align: center;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    position: relative;
-}
-
-#menu::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: 20%;
-    right: 20%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.4), transparent);
+    margin: 25px 0;
 }
 
 .menu-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 18px;
-    color: var(--gold-primary);
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    font-size: 1.1rem;
+    color: #e0e5f0;
+    margin-bottom: 20px;
+    font-weight: 500;
 }
 
-/* --- زر GoldHEN الرئيسي --- */
 .btn-gold {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 380px;
-    height: 52px;
-    background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
-    color: #0d0c1d;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 16px;
-    font-weight: 900;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.35);
-    letter-spacing: 1px;
+    background: transparent;
+    border: 1px solid #ffd700;
+    color: #ffd700;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
 }
 
 .btn-gold:hover {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 12px 30px rgba(255, 215, 0, 0.6);
-    background: linear-gradient(135deg, #fff099 0%, #ffd700 100%);
+    background: #ffd700;
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    transform: translateY(-2px);
 }
 
 .btn-icon {
-    margin: 0 8px;
-    font-size: 18px;
-    transition: transform 0.3s ease;
+    margin: 0 5px;
 }
 
-.btn-gold:hover .btn-icon {
-    transform: scale(1.2);
+/* شريط التحميل الذهبي */
+.progress-container {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 20px;
+    margin: 15px auto;
+    overflow: hidden;
+    position: relative;
 }
 
-/* --- الفوتر والحقوق --- */
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ffaa00, #ffd700, #fff099);
+    border-radius: 20px;
+    box-shadow: 0 0 12px #ffd700;
+    transition: width 0.1s linear;
+}
+
+.status-text {
+    font-size: 0.9rem;
+    color: #ffd700;
+    margin-top: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
 .credit-container {
-    margin-top: 20px;
-}
-
-.credit {
-    font-size: 0.95rem;
-    color: #c0c0d5;
+    margin-top: 25px;
+    font-size: 0.78rem;
+    color: #7a8294;
+    line-height: 1.6;
 }
 
 .credit-link {
-    color: var(--gold-primary);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.05rem;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-    transition: all 0.3s ease;
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: 600;
 }
 
 .thanks {
-    font-size: 0.78rem;
-    color: #707088;
-    margin-top: 5px;
-    letter-spacing: 1px;
-}
-
-/* --- الأنيميشن والتجاوب مع الهواتف --- */
-@keyframes pulseGlow {
-    from { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)); }
-    to { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8)); }
-}
-
-@media (max-width: 600px) {
-    .main-title {
-        font-size: 1.8rem;
-        gap: 6px;
-    }
-    
-    #menu {
-        padding: 20px 15px;
-    }
-
-    .btn-gold {
-        height: 48px;
-        font-size: 15px;
-    }
-
-    .credit {
-        font-size: 0.88rem;
-    }
+    margin-top: 4px;
+    color: #555d6e;
+    font-size: 0.72rem;
 }
