@@ -5,13 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ربوظمنقسيةتىىىؤؤؤؤ😭 PS4 PS5 Exploit Host</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* إضافة أنيميشن الزر والشريط */
+        .btn-gold {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: rgba(255, 255, 255, 0.35);
+            transition: width 0.8s ease-in-out;
+            border-radius: 14px;
+        }
+
+        .btn-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* انميشن وميض الصفحة عند التفعيل */
+        .flash-effect {
+            animation: flashBurst 0.4s ease-out;
+        }
+
+        @keyframes flashBurst {
+            0% { filter: brightness(1); }
+            50% { filter: brightness(2) drop-shadow(0 0 30px #00d2ff); }
+            100% { filter: brightness(1); }
+        }
+    </style>
 </head>
 <body>
 
     <!-- خلفية الجزيئات المضيئة والتفاعلية -->
     <canvas id="particles-canvas"></canvas>
 
-    <div class="main-wrapper">
+    <div class="main-wrapper" id="wrapper">
         <div class="title-container">
             <h1 class="main-title">
                 <span class="name-Brkhat">Brkhat</span>
@@ -27,8 +61,11 @@
         <div id="menu">
             <h2 class="menu-title">GoldHEN Exploit Host</h2>
             
-            <button class="btn-gold" onclick="location.replace('ran/index.html')">
-                <span class="btn-icon">»</span> GoldHEN 7.00 - 13.00 <span class="btn-icon">«</span>
+            <button class="btn-gold" id="exploitBtn" onclick="triggerExploit(event)">
+                <div class="btn-progress" id="btnProgress"></div>
+                <span class="btn-text" id="btnText">
+                    <span class="btn-icon">»</span> GoldHEN 7.00 - 13.00 <span class="btn-icon">«</span>
+                </span>
             </button>
             
             <div class="credit-container">
@@ -40,8 +77,62 @@
         </div>
     </div>
 
-    <!-- سكربت حركة الجزيئات التفاعلية -->
+    <!-- سكربت التفاعل وحركة الجزيئات -->
     <script>
+        // دالة تفاعل زر القولدهن عند الضغط
+        function triggerExploit(e) {
+            e.preventDefault();
+
+            const btnText = document.getElementById('btnText');
+            const btnProgress = document.getElementById('btnProgress');
+            const wrapper = document.getElementById('wrapper');
+
+            // 1. اهتزاز الهاتف (Haptic Feedback)
+            if (navigator.vibrate) {
+                navigator.vibrate([50, 30, 80]);
+            }
+
+            // 2. تشغيل صوت كليك إلكتروني خفيف
+            playClickSound();
+
+            // 3. تأثير وميض الصفحة
+            wrapper.classList.add('flash-effect');
+
+            // 4. تحريك شريط التحميل بداخل الزر وتغيير النص
+            btnProgress.style.width = '100%';
+            btnText.innerHTML = '⚡ Injecting Payload... 100%';
+
+            // 5. التوجيه لصفحة الثغرة بعد 900 ملي ثانية
+            setTimeout(() => {
+                location.replace('ran/index.html');
+            }, 900);
+        }
+
+        // صوت الكليك الإلكتروني عبر Web Audio API (بدون ملفات خارجية)
+        function playClickSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.15);
+                
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.15);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.15);
+            } catch (err) {
+                console.log('Audio Context not allowed yet');
+            }
+        }
+
+        // --- سكربت الجزيئات الأصلي ---
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -94,7 +185,6 @@
                 if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
                 if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
 
-                // تفاعل الجزيئات عند اقتراب الماوس
                 if (mouse.x && mouse.y) {
                     let dx = mouse.x - this.x;
                     let dy = mouse.y - this.y;
