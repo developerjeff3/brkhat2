@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap');
 
 :root {
-    --bg-dark: #080711;
-    --card-bg: rgba(16, 15, 30, 0.65);
+    --bg-dark: #06050e;
+    --card-bg: rgba(13, 11, 26, 0.75);
     --gold-primary: #ffd700;
     --gold-glow: #ffaa00;
     --ps4-blue: #00d2ff;
@@ -18,20 +18,37 @@
 
 body {
     background-color: var(--bg-dark);
-    background-image: 
-        radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 85% 80%, rgba(255, 42, 95, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 60%);
-    background-attachment: fixed;
     min-height: 100vh;
     color: #ffffff;
     font-family: 'Rajdhani', sans-serif;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     overflow-x: hidden;
+    position: relative;
+}
+
+/* خلفية الكانفاس لتغطية الشاشة */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+/* الحاوية الرئيسية فوق الخلفية */
+.main-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100%;
 }
 
 /* --- الهيدر والعنوان --- */
