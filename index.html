@@ -3,12 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ربوظمنقسيةتىىىؤؤؤؤ😭 PS4 PS5 Exploit Host</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Brkhat PS4 PS5 Exploit Host</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #08090c;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .main-wrapper {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            background: rgba(15, 17, 23, 0.75);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 210, 255, 0.1);
+            backdrop-filter: blur(10px);
+            width: 90%;
+            max-width: 480px;
+        }
+
+        .main-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .name-Brkhat {
+            color: #ffd700;
+            text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+        }
+
+        .ps4-title {
+            color: #00d2ff;
+            text-shadow: 0 0 12px rgba(0, 210, 255, 0.6);
+            margin: 0 5px;
+        }
+
+        .ps5-title {
+            color: #ff2a5f;
+            text-shadow: 0 0 12px rgba(255, 42, 95, 0.6);
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            color: #a0a5b5;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            color: #ffd700;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.4), transparent);
+            margin: 25px 0;
+        }
+
+        .menu-title {
+            font-size: 1.1rem;
+            color: #e0e5f0;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .btn-gold {
+            background: transparent;
+            border: 1px solid #ffd700;
+            color: #ffd700;
+            padding: 12px 28px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+        }
+
+        .btn-gold:hover {
+            background: #ffd700;
+            color: #000;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            margin: 0 5px;
+        }
+
+        .credit-container {
+            margin-top: 25px;
+            font-size: 0.78rem;
+            color: #7a8294;
+            line-height: 1.6;
+        }
+
+        .credit-link {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .thanks {
+            margin-top: 4px;
+            color: #555d6e;
+            font-size: 0.72rem;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- خلفية الجزيئات المضيئة والتفاعلية -->
     <canvas id="particles-canvas"></canvas>
 
     <div class="main-wrapper">
@@ -40,7 +182,6 @@
         </div>
     </div>
 
-    <!-- سكربت حركة الجزيئات التفاعلية -->
     <script>
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
@@ -55,26 +196,14 @@
         const particlesArray = [];
         const numberOfParticles = Math.min(60, Math.floor(window.innerWidth / 20));
 
-        let mouse = {
-            x: null,
-            y: null,
-            radius: 120
-        };
+        let mouse = { x: null, y: null, radius: 120 };
 
-        window.addEventListener('mousemove', function(event) {
-            mouse.x = event.x;
-            mouse.y = event.y;
-        });
-
-        window.addEventListener('mouseout', function() {
-            mouse.x = null;
-            mouse.y = null;
-        });
-
-        window.addEventListener('touchmove', function(event) {
-            if(event.touches.length > 0) {
-                mouse.x = event.touches[0].clientX;
-                mouse.y = event.touches[0].clientY;
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+        window.addEventListener('touchmove', (e) => {
+            if(e.touches.length > 0) {
+                mouse.x = e.touches[0].clientX;
+                mouse.y = e.touches[0].clientY;
             }
         });
 
