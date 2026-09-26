@@ -3,40 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ربوظمنقسيةتىىىؤؤؤؤ😭 PS4 PS5 Exploit Host</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Brkhat PS4 PS5 Exploit Host 7.00-13.00</title>
+    <link rel="stylesheet" href="../style.css">
     <style>
-        /* إضافة أنيميشن الزر والشريط */
-        .btn-gold {
-            position: relative;
+        /* حاوية شريط التحميل الذهبي */
+        .progress-container {
+            width: 100%;
+            max-width: 380px;
+            height: 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            margin: 20px auto 10px;
             overflow: hidden;
-        }
-
-        .btn-progress {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 0%;
-            background: rgba(255, 255, 255, 0.35);
-            transition: width 0.8s ease-in-out;
-            border-radius: 14px;
-        }
-
-        .btn-text {
             position: relative;
-            z-index: 2;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(0, 0, 0, 0.8);
         }
 
-        /* انميشن وميض الصفحة عند التفعيل */
-        .flash-effect {
-            animation: flashBurst 0.4s ease-out;
+        /* شريط التحميل الذهبي المتوهج */
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ffaa00, #ffd700, #fff099);
+            border-radius: 20px;
+            box-shadow: 0 0 15px #ffd700, 0 0 25px #ffaa00;
+            transition: width 0.1s linear;
         }
 
-        @keyframes flashBurst {
-            0% { filter: brightness(1); }
-            50% { filter: brightness(2) drop-shadow(0 0 30px #00d2ff); }
-            100% { filter: brightness(1); }
+        /* نص الحالة والنسبة المئوية */
+        .status-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            color: #ffd700;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
     </style>
 </head>
@@ -45,94 +46,98 @@
     <!-- خلفية الجزيئات المضيئة والتفاعلية -->
     <canvas id="particles-canvas"></canvas>
 
-    <div class="main-wrapper" id="wrapper">
+    <div class="main-wrapper">
         <div class="title-container">
             <h1 class="main-title">
                 <span class="name-Brkhat">Brkhat</span>
                 <span class="ps4-title">PS4</span>
                 <span class="ps5-title">PS5</span>
             </h1>
-            <div class="subtitle">Exploit Host</div>
+            <div class="subtitle">EXPLOIT HOST</div>
             <div class="version-badge">FW 7.00 - 13.00</div>
         </div>
         
         <hr>
         
         <div id="menu">
-            <h2 class="menu-title">GoldHEN Exploit Host</h2>
+            <h2 class="menu-title">Triggering GoldHEN...</h2>
             
-            <button class="btn-gold" id="exploitBtn" onclick="triggerExploit(event)">
-                <div class="btn-progress" id="btnProgress"></div>
-                <span class="btn-text" id="btnText">
-                    <span class="btn-icon">»</span> GoldHEN 7.00 - 13.00 <span class="btn-icon">«</span>
-                </span>
-            </button>
+            <!-- شريط التحميل الذهبي -->
+            <div class="progress-container">
+                <div class="progress-bar" id="goldProgressBar"></div>
+            </div>
+            
+            <!-- نص الحالة -->
+            <div class="status-text" id="statusText">Loading Payload... 0%</div>
             
             <div class="credit-container">
                 <p class="credit">
-                    Designed by <a href="#" class="credit-link">ربوظمنقسيةتىىىؤؤؤؤ😭</a>
+                    Only for PS4 with Firmware 7.00 to 13.00<br>
+                    Designed by <a href="#" class="credit-link">Brkhat</a>
                 </p>
-                <p class="thanks">A special thanks to all scene developers.</p>
+                <p class="thanks">Special thanks to all scene developers</p>
             </div>
         </div>
     </div>
 
-    <!-- سكربت التفاعل وحركة الجزيئات -->
+    <!-- سكربت شريط التحميل الذهبي والصوت -->
     <script>
-        // دالة تفاعل زر القولدهن عند الضغط
-        function triggerExploit(e) {
-            e.preventDefault();
+        let progress = 0;
+        const progressBar = document.getElementById('goldProgressBar');
+        const statusText = document.getElementById('statusText');
 
-            const btnText = document.getElementById('btnText');
-            const btnProgress = document.getElementById('btnProgress');
-            const wrapper = document.getElementById('wrapper');
-
-            // 1. اهتزاز الهاتف (Haptic Feedback)
-            if (navigator.vibrate) {
-                navigator.vibrate([50, 30, 80]);
-            }
-
-            // 2. تشغيل صوت كليك إلكتروني خفيف
-            playClickSound();
-
-            // 3. تأثير وميض الصفحة
-            wrapper.classList.add('flash-effect');
-
-            // 4. تحريك شريط التحميل بداخل الزر وتغيير النص
-            btnProgress.style.width = '100%';
-            btnText.innerHTML = '⚡ Injecting Payload... 100%';
-
-            // 5. التوجيه لصفحة الثغرة بعد 900 ملي ثانية
-            setTimeout(() => {
-                location.replace('ran/index.html');
-            }, 900);
-        }
-
-        // صوت الكليك الإلكتروني عبر Web Audio API (بدون ملفات خارجية)
-        function playClickSound() {
+        // تشغيل صوت نجاح التفعيل نيون عبر Web Audio API
+        function playSuccessSound() {
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
-                
+
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.15);
-                
+                // نغمة مزدوجة تصاعدية لتأكيد النجاح
+                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
+                osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.2); // G5
+
                 gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-                gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.15);
-                
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
-                
+
                 osc.start();
-                osc.stop(audioCtx.currentTime + 0.15);
-            } catch (err) {
-                console.log('Audio Context not allowed yet');
+                osc.stop(audioCtx.currentTime + 0.5);
+            } catch (e) {
+                console.log('Audio Context restricted');
             }
         }
 
-        // --- سكربت الجزيئات الأصلي ---
+        // انيميشن محاكاة تحميل الثغرة
+        const interval = setInterval(() => {
+            progress += Math.floor(Math.random() * 8) + 3;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                
+                progressBar.style.width = '100%';
+                statusText.innerHTML = '✔ GoldHEN Loaded Successfully!';
+                statusText.style.color = '#00ff88';
+                statusText.style.textShadow = '0 0 15px #00ff88';
+
+                // تشغيل الصوت عند اكتمال الشريط
+                playSuccessSound();
+
+                // اهتزاز خفيف للهاتف
+                if (navigator.vibrate) {
+                    navigator.vibrate([100, 50, 100]);
+                }
+            } else {
+                progressBar.style.width = progress + '%';
+                statusText.innerHTML = `Loading Payload... ${progress}%`;
+            }
+        }, 120);
+
+        // --- سكربت الجزيئات خلف العناصر ---
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -146,26 +151,14 @@
         const particlesArray = [];
         const numberOfParticles = Math.min(60, Math.floor(window.innerWidth / 20));
 
-        let mouse = {
-            x: null,
-            y: null,
-            radius: 120
-        };
+        let mouse = { x: null, y: null, radius: 120 };
 
-        window.addEventListener('mousemove', function(event) {
-            mouse.x = event.x;
-            mouse.y = event.y;
-        });
-
-        window.addEventListener('mouseout', function() {
-            mouse.x = null;
-            mouse.y = null;
-        });
-
-        window.addEventListener('touchmove', function(event) {
-            if(event.touches.length > 0) {
-                mouse.x = event.touches[0].clientX;
-                mouse.y = event.touches[0].clientY;
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                mouse.x = e.touches[0].clientX;
+                mouse.y = e.touches[0].clientY;
             }
         });
 
