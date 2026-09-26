@@ -1,10 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+/* --- المتغيرات للألوان والتأثيرات --- */
+:root {
+    --bg-main: radial-gradient(circle at 50% 20%, #1a1638 0%, #0a071b 70%, #05030e 100%);
+    --accent-gold: #ffd700;
+    --accent-ps4: #00d2ff;
+    --accent-ps5: #ff3366;
+    --glass-bg: rgba(20, 16, 45, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --btn-bg: linear-gradient(135deg, rgba(30, 41, 89, 0.8), rgba(15, 23, 52, 0.9));
+    --btn-hover: linear-gradient(135deg, #0052d4, #4364f7, #6fb1fc);
+}
+
+* {
+    box-sizing: border-box;
+}
 
 html {
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    background: var(--bg-main);
     background-attachment: fixed;
     min-height: 100vh;
-    color: white;
+    color: #f0f4f8;
     text-align: center;
     font-family: 'Rajdhani', sans-serif;
     overflow-x: hidden;
@@ -12,31 +28,36 @@ html {
 
 body {
     margin: 0;
-    padding: 20px;
+    padding: 30px 15px;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+/* --- الهيدر والعناوين --- */
 h1 {
-    text-shadow: 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.8);
-    font-size: 25px;
+    font-size: 26px;
     color: #ffffff;
     margin-bottom: 20px;
     font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
 }
 
 h1#msgs {
-    font-size: 22px;
-    color: #ffd700;
-    margin: 40px auto;
-    padding: 20px;
-    max-width: 80%;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 20px;
+    color: var(--accent-gold);
+    margin: 30px auto;
+    padding: 16px 24px;
+    max-width: 650px;
+    background: rgba(10, 8, 25, 0.7);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.15), inset 0 0 10px rgba(255, 215, 0, 0.05);
+    backdrop-filter: blur(12px);
     font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
 }
 
 a {
@@ -46,116 +67,114 @@ a {
 
 hr {
     border: none;
-    height: 2px;
-    background: linear-gradient(to right, transparent, #4a9eff, transparent);
-    margin: 20px auto;
-    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-ps4), transparent);
+    margin: 25px auto;
+    width: 85%;
+    opacity: 0.6;
 }
 
 #progress {
     display: block;
     width: 80%;
+    max-width: 500px;
     margin: 20px auto;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- الحاويات الرئيسية (Glassmorphism) --- */
+#menu, #crypto {
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 20px;
+    background: var(--glass-bg);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+#crypto, #tools, #lnx, #mods {
+    display: none;
+}
+
+/* --- الأزرار والتفاعل --- */
+.btn {
+    background: var(--btn-bg);
+    color: #ffffff;
+    width: 280px;
+    height: 52px;
+    line-height: 52px;
+    padding: 0 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    border-radius: 14px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 1px;
+    position: relative;
     overflow: hidden;
 }
 
-#menu {
-    display: block;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
-
-#crypto {
-    display: none;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-#tools {
-    display: none;
-}
-
-#lnx {
-    display: none;
-}
-
-#mods {
-    display: none;
-}
-
-.btn {
-    background: linear-gradient(145deg, #1a3a5c, #003263);
-    color: white;
-    width: 280px;
-    height: 50px;
-    padding-bottom: 5px;
-    text-align: center;
-    font-size: 17px;
-    font-weight: 600;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-left: 5px;
-    margin-right: 5px;
-    border: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    font-family: 'Rajdhani', sans-serif;
-}
-
 .btn:hover {
-    background: linear-gradient(145deg, #0073e6, #005bb5);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 105, 217, 0.4);
+    background: var(--btn-hover);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(67, 100, 247, 0.5), 0 0 15px rgba(0, 210, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+}
+
+.btn:active {
+    transform: translateY(-1px);
 }
 
 .btn-onln {
-    background: linear-gradient(145deg, #2d6a4f, #1b4332);
+    background: linear-gradient(135deg, rgba(20, 80, 50, 0.8), rgba(10, 45, 30, 0.9));
+    border: 1px solid rgba(64, 145, 108, 0.3);
 }
 
 .btn-onln:hover {
-    background: linear-gradient(145deg, #40916c, #2d6a4f);
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
 }
 
-/* تنسيق خاص للعنوان */
+/* --- العناوين والشعار --- */
 .title-container {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .main-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2.6rem;
     font-weight: 900;
-    line-height: 1.4;
-    letter-spacing: 3px;
+    line-height: 1.3;
+    letter-spacing: 4px;
     text-transform: uppercase;
     margin-bottom: 10px;
 }
 
 .name-mustafa {
     display: block;
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 900;
-    background: linear-gradient(90deg, #ffd700, #ffaa00, #ffd700, #ffec80, #ffd700);
+    background: linear-gradient(90deg, #ffe066, #ffb703, #fb8500, #ffe066);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: goldShine 3s linear infinite;
-    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4));
-    letter-spacing: 5px;
+    animation: goldShine 4s linear infinite;
+    filter: drop-shadow(0 0 25px rgba(255, 183, 3, 0.5));
+    letter-spacing: 6px;
 }
 
 @keyframes goldShine {
@@ -164,28 +183,30 @@ hr {
 
 .ps4-title {
     display: inline-block;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #00bfff;
-    text-shadow: 0 0 15px rgba(0, 191, 255, 0.8), 0 0 30px rgba(0, 191, 255, 0.4);
-    margin: 10px 10px;
-    letter-spacing: 4px;
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--accent-ps4);
+    text-shadow: 0 0 20px rgba(0, 210, 255, 0.7);
+    margin: 8px 12px;
+    letter-spacing: 3px;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .ps5-title {
     display: inline-block;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #ff4757;
-    text-shadow: 0 0 15px rgba(255, 71, 87, 0.8), 0 0 30px rgba(255, 71, 87, 0.4);
-    margin: 10px 10px;
-    letter-spacing: 4px;
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--accent-ps5);
+    text-shadow: 0 0 20px rgba(255, 51, 102, 0.7);
+    margin: 8px 12px;
+    letter-spacing: 3px;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .subtitle {
     font-family: 'Rajdhani', sans-serif;
-    font-size: 1.2rem;
-    color: #aaa;
+    font-size: 1.1rem;
+    color: #a0aec0;
     letter-spacing: 6px;
     text-transform: uppercase;
     margin-bottom: 15px;
@@ -194,58 +215,76 @@ hr {
 
 .version-badge {
     display: inline-block;
-    background: linear-gradient(135deg, #ffd700, #ff6b6b);
-    color: #1a1a1a;
-    padding: 8px 25px;
-    border-radius: 30px;
-    font-weight: 800;
-    font-size: 1rem;
-    margin: 15px 0 25px;
-    box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(135deg, #ffb703, #ff0055);
+    color: #ffffff;
+    padding: 8px 28px;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 0.95rem;
+    margin: 15px 0 20px;
+    box-shadow: 0 4px 20px rgba(255, 0, 85, 0.4);
     letter-spacing: 2px;
     text-transform: uppercase;
     font-family: 'Orbitron', sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* الفوتر */
+/* --- الحقوق والفوتر --- */
 .credit {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     margin-bottom: 5px;
-    color: #ddd;
-    font-weight: 500;
+    color: #cbd5e0;
+    font-weight: 600;
 }
 
 .credit-link {
-    background: linear-gradient(90deg, #ffd700, #ffaa00);
+    background: linear-gradient(90deg, #ffb703, #ffe066);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: none;
     font-weight: 800;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
 }
 
 .thanks {
-    font-size: 0.95rem;
-    color: #888;
-    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #718096;
+    margin-top: 8px;
     letter-spacing: 1px;
 }
 
-/* استجابة للموبايل */
+/* --- التوافق مع شاشات الهواتف --- */
 @media (max-width: 600px) {
-    .btn {
-        width: 90%;
+    body {
+        padding: 15px 10px;
     }
-    
+
+    #menu, #crypto {
+        padding: 20px 10px;
+    }
+
+    .btn {
+        width: 95%;
+        margin: 6px 0;
+        font-size: 16px;
+    }
+
     .main-title {
         font-size: 1.8rem;
     }
-    
+
     .name-mustafa {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        letter-spacing: 3px;
     }
-    
+
     .ps4-title, .ps5-title {
         font-size: 1.6rem;
+        margin: 5px;
+    }
+
+    .version-badge {
+        padding: 6px 20px;
+        font-size: 0.85rem;
     }
 }
