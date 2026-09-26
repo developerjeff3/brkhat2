@@ -19,7 +19,7 @@
 html, body {
     width: 100%;
     height: 100vh;
-    overflow: hidden; /* يمنع ظهور شريط التمرير النهائي */
+    overflow: hidden;
     background-color: var(--bg-dark);
     color: #ffffff;
     font-family: 'Rajdhani', sans-serif;
@@ -32,7 +32,7 @@ body {
     position: relative;
 }
 
-/* خلفية الجزيئات تغطي الشاشة بالكامل خلف العناصر */
+/* خلفية الجزيئات */
 #particles-canvas {
     position: absolute;
     top: 0;
@@ -43,7 +43,7 @@ body {
     pointer-events: auto;
 }
 
-/* الحاوية الرئيسية تتوسط الشاشة بحجم مدروس */
+/* الحاوية الرئيسية */
 .main-wrapper {
     position: relative;
     z-index: 2;
@@ -74,14 +74,74 @@ body {
     flex-wrap: wrap;
 }
 
+/* === تأثير الـ Glitch على اسم Brkhat === */
 .name-Brkhat {
+    position: relative;
+    display: inline-block;
     background: linear-gradient(135deg, #fff 0%, var(--gold-primary) 50%, var(--gold-glow) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.5));
-    animation: pulseGlow 3s infinite alternate;
+    cursor: pointer;
 }
 
+.name-Brkhat::before,
+.name-Brkhat::after {
+    content: "Brkhat";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-dark);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.8;
+}
+
+.name-Brkhat::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--ps4-blue);
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+}
+
+.name-Brkhat::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--ps5-red);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim-2 2s infinite linear alternate-reverse;
+}
+
+/* زيادة قوة القلتش عند التمرير بالماوس أو اللمس */
+.name-Brkhat:hover::before {
+    animation: glitch-anim-1 0.4s infinite linear alternate-reverse;
+}
+
+.name-Brkhat:hover::after {
+    animation: glitch-anim-2 0.3s infinite linear alternate-reverse;
+}
+
+/* انميشن القلتش للأزرق والأحمر */
+@keyframes glitch-anim-1 {
+    0% { clip: rect(10px, 9999px, 30px, 0); transform: skew(0.3deg); }
+    20% { clip: rect(40px, 9999px, 15px, 0); transform: skew(0.8deg); }
+    40% { clip: rect(25px, 9999px, 50px, 0); transform: skew(-0.5deg); }
+    60% { clip: rect(60px, 9999px, 20px, 0); transform: skew(0.2deg); }
+    80% { clip: rect(15px, 9999px, 75px, 0); transform: skew(-0.8deg); }
+    100% { clip: rect(50px, 9999px, 35px, 0); transform: skew(0.4deg); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip: rect(65px, 9999px, 100px, 0); transform: skew(-0.5deg); }
+    20% { clip: rect(15px, 9999px, 45px, 0); transform: skew(0.2deg); }
+    40% { clip: rect(80px, 9999px, 10px, 0); transform: skew(-0.8deg); }
+    60% { clip: rect(30px, 9999px, 60px, 0); transform: skew(0.5deg); }
+    80% { clip: rect(90px, 9999px, 25px, 0); transform: skew(-0.2deg); }
+    100% { clip: rect(5px, 9999px, 70px, 0); transform: skew(0.6deg); }
+}
+
+/* باقي العناوين */
 .ps4-title {
     color: var(--ps4-blue);
     text-shadow: 0 0 12px rgba(0, 210, 255, 0.8), 0 0 25px rgba(0, 210, 255, 0.4);
@@ -223,12 +283,7 @@ hr {
     letter-spacing: 1px;
 }
 
-/* --- الأنيميشن والتجاوب مع الهواتف --- */
-@keyframes pulseGlow {
-    from { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)); }
-    to { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.8)); }
-}
-
+/* --- التجاوب مع الهواتف --- */
 @media (max-width: 600px) {
     .main-title {
         font-size: 1.8rem;
