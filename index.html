@@ -1,238 +1,155 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brkhat PS4 PS5 Exploit Host 7.00-13.00</title>
-    <link rel="stylesheet" href="../style.css">
-    <style>
-        /* حاوية شريط التحميل الذهبي */
-        .progress-container {
-            width: 100%;
-            max-width: 380px;
-            height: 14px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 20px;
-            margin: 20px auto 10px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), inset 0 0 5px rgba(0, 0, 0, 0.8);
-        }
-
-        /* شريط التحميل الذهبي المتوهج */
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #ffaa00, #ffd700, #fff099);
-            border-radius: 20px;
-            box-shadow: 0 0 15px #ffd700, 0 0 25px #ffaa00;
-            transition: width 0.1s linear;
-        }
-
-        /* نص الحالة والنسبة المئوية */
-        .status-text {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.95rem;
-            color: #ffd700;
-            margin-top: 10px;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ربوظمنقسيةتىىىؤؤؤؤ😭 PS4 PS5 Exploit Host</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- خلفية الجزيئات المضيئة والتفاعلية -->
-    <canvas id="particles-canvas"></canvas>
+    <!-- خلفية الجزيئات المضيئة والتفاعلية -->
+    <canvas id="particles-canvas"></canvas>
 
-    <div class="main-wrapper">
-        <div class="title-container">
-            <h1 class="main-title">
-                <span class="name-Brkhat">Brkhat</span>
-                <span class="ps4-title">PS4</span>
-                <span class="ps5-title">PS5</span>
-            </h1>
-            <div class="subtitle">EXPLOIT HOST</div>
-            <div class="version-badge">FW 7.00 - 13.00</div>
-        </div>
-        
-        <hr>
-        
-        <div id="menu">
-            <h2 class="menu-title">Triggering GoldHEN...</h2>
-            
-            <!-- شريط التحميل الذهبي -->
-            <div class="progress-container">
-                <div class="progress-bar" id="goldProgressBar"></div>
-            </div>
-            
-            <!-- نص الحالة -->
-            <div class="status-text" id="statusText">Loading Payload... 0%</div>
-            
-            <div class="credit-container">
-                <p class="credit">
-                    Only for PS4 with Firmware 7.00 to 13.00<br>
-                    Designed by <a href="#" class="credit-link">Brkhat</a>
-                </p>
-                <p class="thanks">Special thanks to all scene developers</p>
-            </div>
-        </div>
-    </div>
+    <div class="main-wrapper">
+        <div class="title-container">
+            <h1 class="main-title">
+                <span class="name-Brkhat">Brkhat</span>
+                <span class="ps4-title">PS4</span>
+                <span class="ps5-title">PS5</span>
+            </h1>
+            <div class="subtitle">Exploit Host</div>
+            <div class="version-badge">FW 7.00 - 13.00</div>
+        </div>
+        
+        <hr>
+        
+        <div id="menu">
+            <h2 class="menu-title">GoldHEN Exploit Host</h2>
+            
+            <button class="btn-gold" onclick="location.replace('ran/index.html')">
+                <span class="btn-icon">»</span> GoldHEN 7.00 - 13.00 <span class="btn-icon">«</span>
+            </button>
+            
+            <div class="credit-container">
+                <p class="credit">
+                    Designed by <a href="#" class="credit-link">ربوظمنقسيةتىىىؤؤؤؤ😭</a>
+                </p>
+                <p class="thanks">A special thanks to all scene developers.</p>
+            </div>
+        </div>
+    </div>
 
-    <!-- سكربت شريط التحميل الذهبي والصوت -->
-    <script>
-        let progress = 0;
-        const progressBar = document.getElementById('goldProgressBar');
-        const statusText = document.getElementById('statusText');
+    <!-- سكربت حركة الجزيئات التفاعلية -->
+    <script>
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
 
-        // تشغيل صوت نجاح التفعيل نيون عبر Web Audio API
-        function playSuccessSound() {
-            try {
-                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
-                osc.type = 'sine';
-                // نغمة مزدوجة تصاعدية لتأكيد النجاح
-                osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
-                osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
-                osc.frequency.setValueAtTime(783.99, audioCtx.currentTime + 0.2); // G5
+        const particlesArray = [];
+        const numberOfParticles = Math.min(60, Math.floor(window.innerWidth / 20));
 
-                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+        let mouse = {
+            x: null,
+            y: null,
+            radius: 120
+        };
 
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
+        window.addEventListener('mousemove', function(event) {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
 
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.5);
-            } catch (e) {
-                console.log('Audio Context restricted');
-            }
-        }
+        window.addEventListener('mouseout', function() {
+            mouse.x = null;
+            mouse.y = null;
+        });
 
-        // انيميشن محاكاة تحميل الثغرة
-        const interval = setInterval(() => {
-            progress += Math.floor(Math.random() * 8) + 3;
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(interval);
-                
-                progressBar.style.width = '100%';
-                statusText.innerHTML = '✔ GoldHEN Loaded Successfully!';
-                statusText.style.color = '#00ff88';
-                statusText.style.textShadow = '0 0 15px #00ff88';
+        window.addEventListener('touchmove', function(event) {
+            if(event.touches.length > 0) {
+                mouse.x = event.touches[0].clientX;
+                mouse.y = event.touches[0].clientY;
+            }
+        });
 
-                // تشغيل الصوت عند اكتمال الشريط
-                playSuccessSound();
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 1.2;
+                this.speedY = (Math.random() - 0.5) * 1.2;
+                this.color = Math.random() > 0.5 ? '#00d2ff' : '#ffd700';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
 
-                // اهتزاز خفيف للهاتف
-                if (navigator.vibrate) {
-                    navigator.vibrate([100, 50, 100]);
-                }
-            } else {
-                progressBar.style.width = progress + '%';
-                statusText.innerHTML = `Loading Payload... ${progress}%`;
-            }
-        }, 120);
+                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
 
-        // --- سكربت الجزيئات خلف العناصر ---
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
+                // تفاعل الجزيئات عند اقتراب الماوس
+                if (mouse.x && mouse.y) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < mouse.radius) {
+                        this.x -= dx / 10;
+                        this.y -= dy / 10;
+                    }
+                }
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+        function init() {
+            particlesArray.length = 0;
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        init();
 
-        const particlesArray = [];
-        const numberOfParticles = Math.min(60, Math.floor(window.innerWidth / 20));
+        function connectParticles() {
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let dx = particlesArray[a].x - particlesArray[b].x;
+                    let dy = particlesArray[a].y - particlesArray[b].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
 
-        let mouse = { x: null, y: null, radius: 120 };
+                    if (distance < 110) {
+                        ctx.strokeStyle = `rgba(0, 210, 255, ${1 - distance / 110})`;
+                        ctx.lineWidth = 0.6;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
 
-        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
-        window.addEventListener('mouseout', () => { mouse.x = null; mouse.y = null; });
-        window.addEventListener('touchmove', (e) => {
-            if (e.touches.length > 0) {
-                mouse.x = e.touches[0].clientX;
-                mouse.y = e.touches[0].clientY;
-            }
-        });
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = (Math.random() - 0.5) * 1.2;
-                this.speedY = (Math.random() - 0.5) * 1.2;
-                this.color = Math.random() > 0.5 ? '#00d2ff' : '#ffd700';
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
-                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
-
-                if (mouse.x && mouse.y) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < mouse.radius) {
-                        this.x -= dx / 10;
-                        this.y -= dy / 10;
-                    }
-                }
-            }
-            draw() {
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        function init() {
-            particlesArray.length = 0;
-            for (let i = 0; i < numberOfParticles; i++) {
-                particlesArray.push(new Particle());
-            }
-        }
-        init();
-
-        function connectParticles() {
-            for (let a = 0; a < particlesArray.length; a++) {
-                for (let b = a; b < particlesArray.length; b++) {
-                    let dx = particlesArray[a].x - particlesArray[b].x;
-                    let dy = particlesArray[a].y - particlesArray[b].y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 110) {
-                        ctx.strokeStyle = `rgba(0, 210, 255, ${1 - distance / 110})`;
-                        ctx.lineWidth = 0.6;
-                        ctx.beginPath();
-                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-            }
-            connectParticles();
-            requestAnimationFrame(animate);
-        }
-        animate();
-    </script>
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            connectParticles();
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
 </body>
 </html>
